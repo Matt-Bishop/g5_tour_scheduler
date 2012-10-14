@@ -12,8 +12,13 @@
     </div>
   <% end %>
   
-  
-<%= render "#{@partial}", :f => f%>
+  <% if !@tour_request.has_contact_info? %> 
+    <%= render "user", :f => f%>
+  <% elsif @tour_request.preferred_tour_date.blank? %>
+    <%= render "tour", :f => f%>
+  <% else %>
+    <%= render "rating", :f => f%>
+ <% end %>
 
 
   <div class="actions">

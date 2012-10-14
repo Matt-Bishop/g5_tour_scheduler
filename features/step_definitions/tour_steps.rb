@@ -123,22 +123,16 @@ end
 
 Then /^I should be at the same edit form$/ do
   user = TourRequest.last
-  URI.parse(current_url).path.should == "/tour_requests/#{user.id}/edit"
-  page.should have_content("First name")
+  URI.parse(current_url).path.should == "/tour_requests/#{user.id}"
   page.should_not have_content("Amenities")
+  page.should have_content("First name can't be blank")
+  page.should have_content("Last name can't be blank")
+  page.should have_content("Phone number can't be blank")
 end
 
-When /^I enter a first name$/ do
+When /^I enter the information$/ do
   fill_in "First name", with: "Homer"
-  click_button "Continue"
-end
-
-When /^I enter a last name$/ do
   fill_in "Last name", with: "Simpson"
-  click_button "Continue"
-end
-
-When /^I enter a phone number$/ do
   fill_in "Phone number", with: "5415415411"
   click_button "Continue"
 end

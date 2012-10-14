@@ -8,6 +8,11 @@ class TourRequest < ActiveRecord::Base
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
   validates :ip_address, presence: true
   
+  validates :first_name, presence: true, :on => :update 
+  validates :last_name, presence: true, :on => :update 
+  validates :phone_number, presence: true, :on => :update
+  
+  
   after_create :send_activation_email
   after_update :send_confirmation_email
   

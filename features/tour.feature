@@ -41,9 +41,5 @@ Feature: User can request a tour
       And I visit the link provided in the email
       And I click continue
     Then I should be at the same edit form
-    When I enter a first name 
-    Then I should be at the same edit form
-    When I enter a last name
-    Then I should be at the same edit form
-    When I enter a phone number 
+    When I enter the information
     Then I should be allowed to move on

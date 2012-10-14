@@ -6,8 +6,7 @@ class TourRequestsController < ApplicationController
     @tour_request = TourRequest.new
   end
 
-  def edit
-    @partial = get_partial(@tour_request)    
+  def edit  
   end
 
   def create
@@ -37,16 +36,6 @@ class TourRequestsController < ApplicationController
   
   def success 
   end  
-  
-  def get_partial(tour_request)
-    if !tour_request.has_contact_info?  
-      return "user"
-    elsif tour_request.preferred_tour_date.blank?
-      return "tour"
-    else
-      return "rating"
-    end
-  end
   
   private
   
