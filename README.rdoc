@@ -17,4 +17,5 @@ rails s       (to start the server)
 ###  To run tests
 
 rspec spec/  - to run the couple of specs
+
 bundle exec cucumber features/  - to run the cucumber suite
