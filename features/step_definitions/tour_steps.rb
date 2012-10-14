@@ -1,3 +1,29 @@
+def my_info(view)
+  if view == "page"
+    page.should have_content("Email: homer@simpson.com")
+    page.should have_content("First name: Homer")
+    page.should have_content("Last name: Simpson")
+    page.should have_content("Phone number: 5415415411")
+    page.should have_content("Pool")
+    page.should have_content("Time Machine")
+    page.should have_content("Rec Room")
+    page.should have_content("May 12, 2016")
+    page.should_not have_content("On Site Doctor")
+    page.should_not have_content("Movie Theater")
+  else
+    current_email.default_part_body.to_s.should include "homer@simpson.com"
+    current_email.default_part_body.to_s.should include "Homer"
+    current_email.default_part_body.to_s.should include "Simpson"
+    current_email.default_part_body.to_s.should include "5415415411"
+    current_email.default_part_body.to_s.should include "Time Machine"
+    current_email.default_part_body.to_s.should include "Pool"
+    current_email.default_part_body.to_s.should include "Rec Room"
+    current_email.default_part_body.to_s.should include "May 12, 2016"
+    current_email.default_part_body.to_s.should_not include "On Site Doctor"
+    current_email.default_part_body.to_s.should_not include "Movie Theater"
+  end
+end  
+
 Given /^I visit the site$/ do
   visit root_path
 end
@@ -51,11 +77,12 @@ Then /^I should see a success message$/ do
 end
 
 Then /^the tour request info should be there but not the ip address$/ do
-  current_email.default_part_body.to_s.should include "Pool"
+  my_info("email")
   current_email.default_part_body.to_s.should_not include "IP address:"
 end
 
 Then /^the tour request info should be there with the ip address$/ do
+  my_info("email")
   current_email.default_part_body.to_s.should include "IP address:"
 end
 
@@ -65,15 +92,7 @@ Then /^I should see a ratings form$/ do
 end
 
 Then /^I should see my info$/ do
-  page.should have_content("Email: homer@simpson.com")
-  page.should have_content("First name: Homer")
-  page.should have_content("Last name: Simpson")
-  page.should have_content("Phone number: 5415415411")
-  page.should have_content("Pool")
-  page.should have_content("Time Machine")
-  page.should have_content("Rec Room")
-  page.should_not have_content("On Site Doctor")
-  page.should_not have_content("Movie Theater")
+  my_info("page")
 end
 
 When /^I fill out the ratings form$/ do
