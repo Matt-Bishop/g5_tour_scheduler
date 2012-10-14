@@ -18,15 +18,16 @@
   <%= @tour_request.phone_number %>
 </p>
 
-<p>
-  <b>Amenities:</b>
-  <ul>
-  <% @tour_request.amenities.each do |a| -%>
-  <li><%= a.titleize %></li>
-  <% end -%>
-  </ul>
-</p>
-
+<% if @tour_request.amenities %>
+  <p>
+    <b>Amenities:</b>
+    <ul>
+    <% @tour_request.amenities.each do |a| %>
+    <li><%= a.titleize %></li>
+    <% end %>
+    </ul>
+  </p>
+<% end %>
 
 
 <p>
