@@ -7,8 +7,11 @@ Currently there is both the sqlite3 gem and postgresql gem, but if you need some
 ###  Then just set it up and run it like you normally would
 
 bundle install       (if you don't have bundler, and I'm sure you do, run "gem install bundler" first )
+
 bundle exec rake db:create
+
 bundle exec rake db:migrate
+
 rails s       (to start the server)
 
 ###  To run tests
