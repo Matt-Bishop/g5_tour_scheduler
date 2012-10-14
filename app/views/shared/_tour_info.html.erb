@@ -1,0 +1,40 @@
+<p>
+  <b>Email:</b>
+  <%= @tour_request.email %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @tour_request.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @tour_request.last_name %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @tour_request.phone_number %>
+</p>
+
+<p>
+  <b>Amenities:</b>
+  <ul>
+  <% @tour_request.amenities.each do |a| -%>
+  <li><%= a.titleize %></li>
+  <% end -%>
+  </ul>
+</p>
+
+
+
+<p>
+  <b>Additional questions:</b>
+  <%= @tour_request.additional_questions %>
+</p>
+
+<p>
+  <b>Preferred tour date:</b>
+  <%= @tour_request.preferred_tour_date.strftime("%B %d, %Y") %>
+</p>

@@ -1,0 +1,7 @@
+<h1>We would love to hear your feedback</h1>
+<%= render "shared/tour_info" %>
+
+<div class="field">
+  <%= f.label "Rate your tour experience (1-poor, 5-excellent)" %><br />
+  <%= f.select(:rating, options_for_select([1,2,3,4,5]) )%>
+</div>

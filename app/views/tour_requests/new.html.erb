@@ -1,0 +1,22 @@
+<h1>Request a tour</h1>
+
+<%= form_for(@tour_request) do |f| %>
+  <% if @tour_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tour_request.errors.count, "error") %> prohibited this tour_request from being saved:</h2>
+      <ul>
+      <% @tour_request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div> 
+  <div class="actions">
+    <%= f.submit "Submit"%>
+  </div>
+<% end %>

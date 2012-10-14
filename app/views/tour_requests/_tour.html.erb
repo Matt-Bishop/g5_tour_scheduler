@@ -1,0 +1,19 @@
+<h1>What are you interested in ?</h1>
+
+<div class="field">
+  <label for="tour_request_amenities">Amenities:</label><br />
+	<% TourRequest::AMENITIES.each do |a| -%>
+	<label for="tour_request_<%= a.gsub(' ', '_') %>">
+	  <input type="checkbox" value="<%= a %>" name="amenities[]" id="tour_request_<%= a.gsub(' ', '_') %>">
+	  <%= a.titleize %>
+	</label><br />
+	<% end %>
+</div>
+<div class="field">
+  <%= f.label :additional_questions %><br />
+  <%= f.text_area :additional_questions %>
+</div>
+<div class="field">
+  <%= f.label :preferred_tour_date %><br />
+  <%= f.date_select :preferred_tour_date, :start_year => Time.now.year %>
+</div>
